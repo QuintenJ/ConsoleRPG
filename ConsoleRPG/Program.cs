@@ -1,24 +1,21 @@
-﻿using ConsoleRPG;
+﻿using ConsoleRPG.Characters;
+using ConsoleRPG.Utility;
 
-Story.ScenesSetup();
-Story.StartScene();
+
 var enemy = new Enemy();
-Console.Write("Enter Character Name: ");
-string playerName = Console.ReadLine();
+var player = new Character();
+Text.GameStartMenu();
+Text.ParseInputToInt(Console.ReadLine());
+Text.CharacterInfo(player);
+Character.Attack(player);
+Character.Attack(enemy);
+Text.CharacterInfo(enemy);
+enemy.Name = "CHANGED NAME";
+Text.CharacterInfo(enemy);
+Text.CharacterInfo(player);
 
-Console.WriteLine("Thank you......\nBuilding Character......");
-var player = new Character(playerName);
-enemy.DisplayCharacterInfo();
-player.DisplayCharacterInfo();
-player.Heal(player);
-enemy.Heal(enemy);
-player.DisplayCharacterInfo();
-enemy.DisplayCharacterInfo();
+Character.Attack(player);
+Character.Attack(enemy);
 
-enemy.Attack(player);
-player.Attack(enemy);
-player.DisplayCharacterInfo();
-enemy.DisplayCharacterInfo();
-
-
-Story.ReactionScene();
+Text.CharacterInfo(enemy);
+Text.CharacterInfo(player);
